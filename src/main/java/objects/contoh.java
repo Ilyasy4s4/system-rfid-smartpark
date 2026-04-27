@@ -9,5 +9,9 @@ package objects;
  * @author DEVITA
  */
 public class contoh {
-    
+
+    public static void main(String[] args) {
+        System.out.println("Halo, ini class Contoh!");
+    }
+
 }

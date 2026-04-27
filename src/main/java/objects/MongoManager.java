@@ -20,6 +20,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 
 
 public class MongoManager {
+<<<<<<< HEAD
     private static MongoClient mongoClient;
     private static final String DATABASE_NAME = "SmartPark_db";
     
@@ -37,4 +38,7 @@ public class MongoManager {
         return mongoClient.getDatabase(DATABASE_NAME);
     }
      
+=======
+   
+>>>>>>> 15a078a788bf2e970914265c5528d9bb02809ee0
 }
