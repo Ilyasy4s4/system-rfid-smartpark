@@ -12,6 +12,5 @@ package objects;
 
 
 public class MongoManager {
-
    
 }
