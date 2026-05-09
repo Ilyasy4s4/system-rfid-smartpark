@@ -4,38 +4,48 @@
  */
 package objects;
 
-/**
- *
- * @author LENOVO
- */
+import com.mongodb.client.MongoCollection;
+import org.bson.conversions.Bson;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GenericDAO<T> implements BaseDAO<T> {
-    private final String collectionName;
-    private final Class<T> clazz; 
-    private List<T> dataList = new ArrayList<>();
+    private final MongoCollection<T> collection;
+    private final Class<T> clazz;
 
     public GenericDAO(String collectionName, Class<T> clazz) {
-        this.collectionName = collectionName;
         this.clazz = clazz;
+        // Mengambil koneksi langsung dari MongoManager kamu
+        this.collection = MongoManager.getDatabase().getCollection(collectionName, clazz);
     }
 
     @Override
     public void save(T entity) {
-        dataList.add(entity);
-        System.out.println("Menyimpan ke " + collectionName + ": " + clazz.getSimpleName());
+        collection.insertOne(entity);
     }
 
     @Override
-    public void update(int index, T entity) { dataList.set(index, entity); }
+    public void update(Bson filter, T entity) {
+        collection.replaceOne(filter, entity);
+    }
 
     @Override
-    public void delete(int index) { dataList.remove(index); }
+    public void delete(Bson filter) {
+        collection.deleteOne(filter);
+    }
 
     @Override
-    public List<T> findAll() { return dataList; }
+    public List<T> findAll() {
+        return collection.find().into(new ArrayList<>());
+    }
 
     @Override
-    public T findByIndex(int index) { return dataList.get(index); }
+    public T findOne(Bson filter) {
+        return collection.find(filter).first();
+    }
+
+    @Override
+    public List<T> findMany(Bson filter) {
+        return collection.find(filter).into(new ArrayList<>());
+    }
 }

@@ -4,16 +4,17 @@
  */
 package objects;
 
-/**
- *
- * @author LENOVO
- */
 import java.util.List;
+import org.bson.conversions.Bson;
 
 public interface BaseDAO<T> {
+    // Operasi CRUD Dasar menggunakan Bson Filter
     void save(T entity);
-    void update(int index, T entity);
-    void delete(int index);
+    void update(Bson filter, T entity);
+    void delete(Bson filter);
+    
+    // Operasi Reading
     List<T> findAll();
-    T findByIndex(int index);    
+    T findOne(Bson filter); // Mencari satu data (misal: berdasarkan NIM)
+    List<T> findMany(Bson filter); // Mencari banyak data
 }
