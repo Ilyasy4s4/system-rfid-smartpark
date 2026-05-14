@@ -20,24 +20,21 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 
 public class MongoManager {
-    
     private static MongoClient mongoClient;
+    private static MongoDatabase database; // Simpan database sebagai static variable
     private static final String DATABASE_NAME = "SmartPark_db";
-    
+
     public static MongoDatabase getDatabase() {
         if (mongoClient == null) {
-            
             CodecRegistry pojoCodecRegistry = CodecRegistries.fromRegistries(
                     MongoClientSettings.getDefaultCodecRegistry(),
                     CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build())
             );
-            
-            
+
             mongoClient = MongoClients.create("mongodb://localhost:27017");
-            
-            
-            return mongoClient.getDatabase(DATABASE_NAME).withCodecRegistry(pojoCodecRegistry);
+            // Pasang codec sekali saja di sini
+            database = mongoClient.getDatabase(DATABASE_NAME).withCodecRegistry(pojoCodecRegistry);
         }
-        return mongoClient.getDatabase(DATABASE_NAME);
+        return database;
     }
 }
