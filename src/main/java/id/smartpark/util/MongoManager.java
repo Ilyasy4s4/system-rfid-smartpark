@@ -9,7 +9,7 @@
  * @author LENOVO
  */
 
-package objects;
+package id.smartpark.util;
 
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;

@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package objects;
+package id.smartpark.dao;
 
+import id.smartpark.dao.BaseDAO;
 import com.mongodb.client.MongoCollection;
 import org.bson.conversions.Bson;
 import java.util.ArrayList;
 import java.util.List;
+import id.smartpark.util.MongoManager;
 
 public class GenericDAO<T> implements BaseDAO<T> {
     private final MongoCollection<T> collection;
