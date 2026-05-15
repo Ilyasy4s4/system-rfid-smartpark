@@ -22,7 +22,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 public class MongoManager {
     private static MongoClient mongoClient;
     private static MongoDatabase database; // Simpan database sebagai static variable
-    private static final String DATABASE_NAME = "SmartPark_db";
+    private static final String DATABASE_NAME = "smartPark_db";
 
     public static MongoDatabase getDatabase() {
         if (mongoClient == null) {
