@@ -2,6 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
+// Import library GUI, Service RFID, dan java awt
 package id.smartpark;
 import id.smartpark.gui.AdminPage;
 import id.smartpark.gui.DataSatpam;
@@ -10,35 +12,38 @@ import id.smartpark.serial.SerialDataHandler;
 import java.awt.Frame;
 
 /**
- *
- * @author LENOVO
+ * Class MainApp: Frame utama aplikasi SmartPark.
+ * Berfungsi sebagai container (Wadah) untuk halaman halaman lain.
+ * @author DEVITA
  */
 public class MainApp extends javax.swing.JFrame {
-    
+ 
+ // Inisialisasi logger untuk mencatat error atau log sistem jika diperlukan
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainApp.class.getName());
 
     /**
-     * Creates new form MainApp1
-     */
+     * Constructor: Dijalankan pertama kali saat objek MainApp dibuat. 
+    */
     public MainApp() {
         
         // 1. Koneksi hardware RFID sekali saja saat aplikasi start
-        // Pastikan COM3 sesuai dengan port alat RFID di laptopmu
+        // Memakaii Singleton (getInstance) agar koneksi hanya ada satu di selruh aplikasi
         SerialService.getInstance().connect("COM3", 9600);
 
-        // 2. Tambahkan Global Observer (Logging aktivitas RFID)
+        // 2. Observer Pertama: Digunakan untuk mencetak log ke console setiap ada kartu masuk
         SerialService.getInstance().addHandler(tagId -> {
             System.out.println("Global Log [SmartPark]: Kartu " + tagId + " terdeteksi.");
-            // Kamu bisa tambahkan logika database di sini nanti
         });
         
         // 3. Update UI jika ada pengetapan kartu (Opsional)
         SerialService.getInstance().addHandler(tagId -> {
+            // SwingUtilities.invokeLater memastikan update UI berjalan di thread yang aman
             javax.swing.SwingUtilities.invokeLater(() -> {
-                // Contoh: lblStatus.setText("Scanning: " + tagId);
+                // Contoh: lblStatus.setText("Scanning: " + tagId); (untuk kode updaate status label)
             });
         });
         
+        // Memanggil fungsi buatan Netbeans untuk generate komponen GUI (tombol, panel)
         initComponents();
         // Tentukan ukuran standar agar tidak gepeng saat pertama muncul
         this.setSize(1280, 720); 
@@ -63,6 +68,7 @@ public class MainApp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,6 +98,7 @@ public class MainApp extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(106, 103, 139));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Container_1.png"))); // NOI18N
         jButton3.setText("Pengaturan");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -104,6 +111,11 @@ public class MainApp extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Universitas Harkat Negeri");
 
+        jButton2.setBackground(new java.awt.Color(106, 103, 139));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Container (1).png"))); // NOI18N
+        jButton2.setText("LOGOUT");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -111,17 +123,20 @@ public class MainApp extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton2)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +152,9 @@ public class MainApp extends javax.swing.JFrame {
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -228,6 +245,7 @@ public class MainApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
