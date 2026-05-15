@@ -4,6 +4,7 @@
  */
 package id.smartpark;
 import id.smartpark.gui.AdminPage;
+import id.smartpark.gui.DataSatpam;
 import id.smartpark.services.SerialService;
 import id.smartpark.serial.SerialDataHandler;
 import java.awt.Frame;
@@ -83,6 +84,11 @@ public class MainApp extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Data Petugas");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(106, 103, 139));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,6 +191,18 @@ public class MainApp extends javax.swing.JFrame {
     jPanel1.repaint();
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       jPanel1.removeAll();
+    jPanel1.setLayout(new java.awt.BorderLayout());
+    
+    DataSatpam ds = new DataSatpam();
+    // Mengambil jPanel5 (Lapis utama) dan memasukkannya ke MainApp
+    jPanel1.add(ds.getPanelUtama(), java.awt.BorderLayout.CENTER);
+    
+    jPanel1.revalidate();
+    jPanel1.repaint();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
