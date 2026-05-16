@@ -221,6 +221,7 @@ public class MainApp extends javax.swing.JFrame {
     jPanel1.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    //CEEEKKKKK MASUK GAAKK
     /**
      * @param args the command line arguments
      */

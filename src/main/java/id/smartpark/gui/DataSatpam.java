@@ -77,7 +77,7 @@ public class DataSatpam extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnSave.setBackground(new java.awt.Color(0, 0, 255));
+        btnSave.setBackground(new java.awt.Color(102, 153, 255));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");

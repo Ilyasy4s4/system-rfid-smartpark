@@ -4,9 +4,13 @@
  */
 package id.smartpark.gui;
 
+// Import cllass model data mahasiswa untuk menampung data entitas mahasiswa
 import id.smartpark.objects.Mahasiswa;
+// Import class mahasiswaService yang menangani logika dan query database
 import id.smartpark.services.MahasiswaService;
+// Import  class frame dari java.awt untuk manajemen window dasar 
 import java.awt.Frame;
+// Import exception untuk menangani kesalahan konfigurasi visual 
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -14,13 +18,16 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class AdminPage extends javax.swing.JFrame {
 
+    // Constructor AdminPage: Method otomatis saar objek class ini dibuat
     public AdminPage() {
-        initComponents();
+        initComponents(); //Inisialisasi komponen GUI
         
         // Memuat data pertama kali saat halaman dibuka
         showData(""); 
     }
     
+    // Getter Method: Mengembalikan objek jPanel5 
+    // Sangat berguna agar MainApp bisa mengambil konten halaman ini dan menempelkannya secara dinamis  
     public javax.swing.JPanel getPanelUtama() {
     return jPanel5;
 }
