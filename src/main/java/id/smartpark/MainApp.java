@@ -210,7 +210,7 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       jPanel1.removeAll();
+    jPanel1.removeAll();
     jPanel1.setLayout(new java.awt.BorderLayout());
     
     DataSatpam ds = new DataSatpam();
