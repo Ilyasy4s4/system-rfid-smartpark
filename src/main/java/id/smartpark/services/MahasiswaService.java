@@ -26,6 +26,7 @@ import org.bson.conversions.Bson;
  */
 public class MahasiswaService {
 
+    // Deklarasi variabel DAO global khusus untuk entitas Mahasiswa
     private final GenericDAO<Mahasiswa> DAO;
 
     public MahasiswaService() {
@@ -33,6 +34,7 @@ public class MahasiswaService {
         this.DAO = new GenericDAO<>("mahasiswa", Mahasiswa.class);
     }
 
+    // Fungsi untuk menyimpan objek data mahasiswa baru ke database melalui DAO
     public void tambahMahasiswa(Mahasiswa m) {
         DAO.save(m);
     }
