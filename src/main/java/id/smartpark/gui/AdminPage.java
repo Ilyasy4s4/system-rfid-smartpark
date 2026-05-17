@@ -103,7 +103,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         jLabel4.setText("Prodi");
 
-        txtKRDept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika", "Farmasi", "Manajemen", "Akuntansi", "Teknik Mesin", "Teknik Komputer" }));
+        txtKRDept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika", "Farmasi", "Manajemen", "Akuntansi", "Teknik Mesin", "Teknik Komputer", "Keperawatan", "Kebidanan", "Akuntansi Sektor Publik", "Desain Komunikasi Visual" }));
         txtKRDept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtKRDeptActionPerformed(evt);
@@ -112,7 +112,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnSave.setBackground(new java.awt.Color(0, 0, 255));
+        btnSave.setBackground(new java.awt.Color(102, 153, 255));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");
@@ -274,7 +274,7 @@ public class AdminPage extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
