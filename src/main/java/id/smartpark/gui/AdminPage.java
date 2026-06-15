@@ -31,8 +31,8 @@ public class AdminPage extends javax.swing.JFrame {
     public javax.swing.JPanel getPanelUtama() {
     return jPanel5;
 }
-    // Biarkan isi ini dihasilkan otomatis oleh NetBeans (abu-abu)
-    // Pastikan Variable Name di Design: txtUID, txtKRID, txtKRName, txtKRDept, jPanel4
+    
+    
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
 

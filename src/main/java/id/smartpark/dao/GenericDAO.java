@@ -12,46 +12,60 @@ import java.util.List;
 import id.smartpark.util.MongoManager;
 
 public class GenericDAO<T> implements BaseDAO<T> {
+<<<<<<< HEAD
     // Constructor untuk inisialisasi nama koleksi dan koneksi MongoDB via MongoManager
     private final MongoCollection<T> collection;
+=======
+     // Constructor untuk inisialisasi nama koleksi dan koneksi MongoDB via MongoManager
+    private final MongoCollection<T> collection; 
+>>>>>>> c4643b3 (perubahan)
     private final Class<T> clazz;
 
     public GenericDAO(String collectionName, Class<T> clazz) {
         this.clazz = clazz;
-        // Mengambil koneksi langsung dari MongoManager kamu
+        // Mengambil koneksi langsung dari MongoManager 
         this.collection = MongoManager.getDatabase().getCollection(collectionName, clazz);
     }
 
+<<<<<<< HEAD
     @Override
+=======
+    @Override 
+>>>>>>> c4643b3 (perubahan)
     // Menyimpan satu dokumen/objek baru ke dalam koleksi MongoDB
     public void save(T entity) {
         collection.insertOne(entity);
     }
-
+    
+    // Memperbarui dokumen lama dengan data baru berdasarkan kriteria filter
     @Override
     // Memperbarui dokumen lama dengan data baru berdasarkan kriteria filter
     public void update(Bson filter, T entity) {
         collection.replaceOne(filter, entity);
     }
-
+    
+    // Menghapus satu dokumen dari database berdasarkan kriteria filter
     @Override
     // Menghapus satu dokumen dari database berdasarkan kriteria filter
     public void delete(Bson filter) {
         collection.deleteOne(filter);
     }
-
+    
+    // Mengambil semua dokumen yang ada di dalam koleksi tanpa filter
     @Override
     // Mengambil semua dokumen yang ada di dalam koleksi tanpa filter
     public List<T> findAll() {
         return collection.find().into(new ArrayList<>());
     }
-
+    
+    // Mencari dan mengambil satu dokumen pertama yang cocok dengan filter
     @Override
     // Mencari dan mengambil satu dokumen pertama yang cocok dengan filter
     public T findOne(Bson filter) {
         return collection.find(filter).first();
     }
 
+    // Mencari dan mengambil banyak dokumen sekaligus yang cocok dengan filter
     @Override
     // Mencari dan mengambil banyak dokumen sekaligus yang cocok dengan filter
     public List<T> findMany(Bson filter) {

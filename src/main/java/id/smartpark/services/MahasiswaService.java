@@ -25,7 +25,10 @@ import org.bson.conversions.Bson;
  * Sesuai Milestone 1: Dashboard Admin (Sprint 2).
  */
 public class MahasiswaService {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4643b3 (perubahan)
     // Deklarasi variabel DAO global khusus untuk entitas Mahasiswa
     private final GenericDAO<Mahasiswa> DAO;
 
@@ -33,7 +36,11 @@ public class MahasiswaService {
         // Inisialisasi DAO dengan koleksi "mahasiswa" sesuai database SmartPark_db
         this.DAO = new GenericDAO<>("mahasiswa", Mahasiswa.class);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> c4643b3 (perubahan)
     // Fungsi untuk menyimpan objek data mahasiswa baru ke database melalui DAO
     public void tambahMahasiswa(Mahasiswa m) {
         DAO.save(m);
@@ -73,7 +80,7 @@ public class MahasiswaService {
             ));
 
             // Label Informasi dengan warna teks yang lebih kontras (Hitam/Abu Gelap)
-            JLabel lblNama = new JLabel("Nama: " + m.getNamaLengkap());
+            JLabel lblNama = new JLabel("Nama Lengkap: " + m.getNamaLengkap());
             lblNama.setFont(new Font("Segoe UI", Font.BOLD, 13));
             lblNama.setForeground(new Color(51, 51, 51));
             
@@ -106,7 +113,7 @@ public class MahasiswaService {
             btnDel.setCursor(new Cursor(Cursor.HAND_CURSOR));
             btnDel.addActionListener((ActionEvent e) -> {
                 int confirm = JOptionPane.showConfirmDialog(null, 
-                        "Hapus data " + m.getNamaLengkap() + "?", "Konfirmasi", 
+                        "Hapus data " + m.getNamaLengkap() + "?", "Konfirmasi, OK", 
                         JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     hapusMahasiswa(m.getNim());
