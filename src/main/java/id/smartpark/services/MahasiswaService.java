@@ -25,10 +25,7 @@ import org.bson.conversions.Bson;
  * Sesuai Milestone 1: Dashboard Admin (Sprint 2).
  */
 public class MahasiswaService {
-<<<<<<< HEAD
 
-=======
->>>>>>> c4643b3 (perubahan)
     // Deklarasi variabel DAO global khusus untuk entitas Mahasiswa
     private final GenericDAO<Mahasiswa> DAO;
 
@@ -36,11 +33,7 @@ public class MahasiswaService {
         // Inisialisasi DAO dengan koleksi "mahasiswa" sesuai database SmartPark_db
         this.DAO = new GenericDAO<>("mahasiswa", Mahasiswa.class);
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> c4643b3 (perubahan)
     // Fungsi untuk menyimpan objek data mahasiswa baru ke database melalui DAO
     public void tambahMahasiswa(Mahasiswa m) {
         DAO.save(m);

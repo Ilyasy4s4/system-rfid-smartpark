@@ -1,8 +1,12 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package id.smartpark.gui;
+
+import id.smartpark.MainApp;
+
 
 /**
  *
@@ -89,11 +93,10 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(BtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                        .addComponent(txtusername)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5)))
+                    .addComponent(BtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(txtusername)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,6 +176,16 @@ public class LoginPage extends javax.swing.JFrame {
             "Login Berhasil!"
         );
 
+        MainApp mainApp = new MainApp();
+
+        // tampilkan AdminPage otomatis
+        mainApp.showAdminPage();
+
+        mainApp.setVisible(true);
+
+        // tutup LoginPage
+        this.dispose();
+
     } else {
 
         javax.swing.JOptionPane.showMessageDialog(
@@ -206,7 +219,9 @@ public class LoginPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new LoginPage().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginPage().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -221,4 +236,4 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
-}
+};

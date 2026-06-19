@@ -7,6 +7,7 @@
 package id.smartpark;
 import id.smartpark.gui.AdminPage;
 import id.smartpark.gui.DataSatpam;
+import id.smartpark.gui.LoginPage;
 import id.smartpark.services.SerialService;
 import id.smartpark.serial.SerialDataHandler;
 import java.awt.Frame;
@@ -221,6 +222,21 @@ public class MainApp extends javax.swing.JFrame {
     jPanel1.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    public void showAdminPage() {
+
+    jPanel1.removeAll();
+
+    jPanel1.setLayout(new java.awt.BorderLayout());
+
+    AdminPage adminPage = new AdminPage();
+
+    javax.swing.JPanel lapisUtama = adminPage.getPanelUtama();
+
+    jPanel1.add(lapisUtama, java.awt.BorderLayout.CENTER);
+
+    jPanel1.revalidate();
+    jPanel1.repaint();
+}
     //CEEEKKKKK MASUK GAAKK
     /**
      * @param args the command line arguments
@@ -240,7 +256,7 @@ public class MainApp extends javax.swing.JFrame {
 
         /* Tampilkan Form */
         java.awt.EventQueue.invokeLater(() -> {
-            new MainApp().setVisible(true);
+            new LoginPage().setVisible(true);
         });
     }
 
