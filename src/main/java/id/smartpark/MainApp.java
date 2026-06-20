@@ -7,13 +7,11 @@
 package id.smartpark;
 
 import id.smartpark.gui.AdminPage;
+import id.smartpark.gui.LoginPage;
 import id.smartpark.services.SerialService;
+import javax.swing.JOptionPane;
 
-/**
- * Class MainApp: Frame utama aplikasi SmartPark.
- * Berfungsi sebagai container (Wadah) untuk halaman halaman lain.
- * @author DEVITA
- */
+
 public class MainApp extends javax.swing.JFrame {
  
  // Inisialisasi logger untuk mencatat error atau log sistem jika diperlukan
@@ -103,6 +101,11 @@ public class MainApp extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Container (1).png"))); // NOI18N
         jButton2.setText("LOGOUT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(106, 103, 139));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,6 +203,22 @@ public class MainApp extends javax.swing.JFrame {
     jPanel1.repaint();
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int konfirmasi = JOptionPane.showConfirmDialog(
+            this,
+            "Yakin ingin logout?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION
+    );
+
+        if (konfirmasi == JOptionPane.YES_OPTION) {
+        new LoginPage().setVisible(true);
+        this.dispose();
+       }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     //CEEEKKKKK MASUK GAAKK
     /**

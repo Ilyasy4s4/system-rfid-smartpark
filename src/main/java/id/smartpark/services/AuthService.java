@@ -7,6 +7,7 @@ import id.smartpark.gui.LoginPage;
 
 import com.mongodb.client.model.Filters;
 import id.smartpark.MainApp;
+import id.smartpark.util.SecurityUtils;
 import java.awt.Frame;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
@@ -24,12 +25,17 @@ public class AuthService {
                       String plainPassword,
                       LoginPage loginPage) {
 
-        User user = userDAO.findOne(
-                Filters.and(
-                        Filters.eq("username", username),
-                        Filters.eq("password", plainPassword)
-                )
-        );
+ String hashedPassword = SecurityUtils.getHash(
+        plainPassword,
+        SecurityUtils.SHA_256
+);
+
+User user = userDAO.findOne(
+        Filters.and(
+                Filters.eq("username", username),
+                Filters.eq("password", hashedPassword)
+        )
+);
 
         if (user != null) {
 
@@ -71,12 +77,17 @@ public class AuthService {
                              String username,
                              String password) {
 
-        User newUser = new User(
-                fullname,
-                username,
-                password,
-                null
-        );
+String hashedPassword = SecurityUtils.getHash(
+        password,
+        SecurityUtils.SHA_256
+);
+
+User newUser = new User(
+        fullname,
+        username,
+        hashedPassword,
+        null
+);
 
         try {
 
