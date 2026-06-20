@@ -12,13 +12,10 @@ import java.util.List;
 import id.smartpark.util.MongoManager;
 
 public class GenericDAO<T> implements BaseDAO<T> {
-<<<<<<< HEAD
+
     // Constructor untuk inisialisasi nama koleksi dan koneksi MongoDB via MongoManager
     private final MongoCollection<T> collection;
-=======
-     // Constructor untuk inisialisasi nama koleksi dan koneksi MongoDB via MongoManager
-    private final MongoCollection<T> collection; 
->>>>>>> c4643b3 (perubahan)
+    
     private final Class<T> clazz;
 
     public GenericDAO(String collectionName, Class<T> clazz) {
@@ -27,11 +24,9 @@ public class GenericDAO<T> implements BaseDAO<T> {
         this.collection = MongoManager.getDatabase().getCollection(collectionName, clazz);
     }
 
-<<<<<<< HEAD
-    @Override
-=======
+    
     @Override 
->>>>>>> c4643b3 (perubahan)
+    
     // Menyimpan satu dokumen/objek baru ke dalam koleksi MongoDB
     public void save(T entity) {
         collection.insertOne(entity);

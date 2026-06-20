@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package id.smartpark.gui;
+import id.smartpark.services.AuthService;
 
 /**
  *
@@ -163,24 +164,33 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
 
-    String username = txtusername.getText();
+
+    String username = txtusername.getText().trim();
     String password = new String(txtpassword.getPassword());
 
-    if(username.equals("admin") && password.equals("admin123")){
+    // Validasi input kosong
+    if (username.isEmpty() || password.isEmpty()) {
 
         javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "Login Berhasil!"
+                this,
+                "Username dan Password wajib diisi!",
+                "Peringatan",
+                javax.swing.JOptionPane.WARNING_MESSAGE
         );
 
-    } else {
-
-        javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "Username atau Password Salah!"
-        );
-
+        return;
     }
+
+    // Panggil AuthService
+    id.smartpark.services.AuthService authService =
+            new id.smartpark.services.AuthService();
+
+    authService.login(
+            username,
+            password,
+            this
+    );
+
 
     }//GEN-LAST:event_BtnLoginActionPerformed
 

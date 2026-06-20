@@ -4,14 +4,15 @@
  */
 package id.smartpark.util;
 
-/**
- *
- * @author LENOVO
- */
-public class TestD {   
+public class TestD {
+
     public static void main(String[] args) {
-        String pwd = EncryptionUtils
-                .encrypt("123");
+
+        String pwd = SecurityUtils.getHash(
+                "123",
+                SecurityUtils.SHA_256
+        );
+
         System.out.println(pwd);
     }
 }
