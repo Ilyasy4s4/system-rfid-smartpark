@@ -39,8 +39,9 @@ public class DigitalClockService {
                     LocalDateTime now = LocalDateTime.now();
                     String timeFormatted = now.format(formatter);
                     
-                    // Update label secara asinkron
-                    targetLabel.setText(timeFormatted);
+                    javax.swing.SwingUtilities.invokeLater(() ->
+                       targetLabel.setText(timeFormatted)
+                   );
                     
                     Thread.sleep(1000);
                 }

@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.bson.conversions.Bson;
+import id.smartpark.util.SecurityUtils;
 
 /**
  * MahasiswaService - Menangani logika CRUD dan render antarmuka Grid Mahasiswa.
@@ -36,6 +37,14 @@ public class MahasiswaService {
 
     // Fungsi untuk menyimpan objek data mahasiswa baru ke database melalui DAO
     public void tambahMahasiswa(Mahasiswa m) {
+
+        String hashedUid = SecurityUtils.getHash(
+                m.getUidRfid(),
+                SecurityUtils.SHA_256
+        );
+
+        m.setUidRfid(hashedUid);
+
         DAO.save(m);
     }
 
@@ -150,6 +159,12 @@ public class MahasiswaService {
      */
     public void updateMahasiswa(Mahasiswa m) {
         Bson filter = Filters.eq("nim", m.getNim());
+        String hashedUid = SecurityUtils.getHash(
+        m.getUidRfid(),
+        SecurityUtils.SHA_256
+);
+
+m.setUidRfid(hashedUid);
         DAO.update(filter, m);
         AdminPage.showData(""); // Refresh grid
         JOptionPane.showMessageDialog(null, "Data berhasil diperbarui!");
