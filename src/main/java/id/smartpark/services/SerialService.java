@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 /**
  * SerialService - Singleton untuk menangani komunikasi Hardware RFID
  * Adaptasi dari referensi Pak Nishom
@@ -95,6 +96,10 @@ public class SerialService {
             handler.onDataReceived(data);
         }
     }
+    
+    public void simulateRFID(String uid) {
+    broadcast(uid);
+}
 
     public void disconnect() {
         if (activePort != null && activePort.isOpen()) {
